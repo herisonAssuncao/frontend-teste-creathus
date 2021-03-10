@@ -136,7 +136,6 @@ export default {
             sexo: contato.sexo
           }
         )
-        console.log('atualizou')
       } catch (error) {
         alert(error)
       }
@@ -163,8 +162,6 @@ export default {
         return
       }
 
-      console.log('this.contato')
-      console.log(this.contato)
       if (this.contato.isEdit) {
         this.atualizaContato(this.contato)
       } else {
