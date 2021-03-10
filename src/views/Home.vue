@@ -131,7 +131,7 @@ export default {
       this.$bvModal.show('addNewContato')
     },
     editContato (contato) {
-      this.$root.$emit('edit-contato', Object.assign({}, contato.item))
+      this.$root.$emit('edit-contato', contato)
       this.$bvModal.show('addNewContato')
     },
     deleteContato (contato) {

@@ -125,6 +125,22 @@ export default {
     'b-form': BForm
   },
   methods: {
+    async atualizaContato (contato) {
+      try {
+        await axios.put(
+          `http://54.94.80.69:9000/api/contatos/${contato.id}`,
+          {
+            nome: contato.nome,
+            email: contato.email,
+            telefone: contato.telefone,
+            sexo: contato.sexo
+          }
+        )
+        console.log('atualizou')
+      } catch (error) {
+        alert(error)
+      }
+    },
     async salvaContato (contato) {
       try {
         await axios.post(
@@ -147,7 +163,13 @@ export default {
         return
       }
 
-      this.salvaContato(this.contato)
+      console.log('this.contato')
+      console.log(this.contato)
+      if (this.contato.isEdit) {
+        this.atualizaContato(this.contato)
+      } else {
+        this.salvaContato(this.contato)
+      }
       this.$bvModal.hide('addNewContato')
       this.$store.dispatch('atualizaDatatable') // dispatch store action
     },
